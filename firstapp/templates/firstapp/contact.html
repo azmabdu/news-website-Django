@@ -1,0 +1,190 @@
+{% extends 'firstapp/base.html'%}
+{% load static %}
+
+
+{% block body %}
+    <div class="topheader">
+      <div class="container">
+        <ul class="menu">
+          <li><a href="#">о нас</a></li>
+          <li><a href="#">редакционная</a></li>
+          <li><a href="#">политика</a></li>
+          <li><a href="#">контакты</a></li>
+        </ul>
+        <ul class="kurs">
+          <li>1 USD = {{usd_to_sum}}</li>
+          <li>1 EUR = {{eur_to_sum}}</li>
+          <li>1 RUB = {{rub_to_sum}}</li>
+        </ul>
+        <ul class="lang">
+          <li><a href="">En</a></li>
+          <li class="active"><a href="#">Ru</a></li>
+          <li><a href="">Uz</a></li>
+        </ul>
+        <ul class="social">
+          <li>
+            <a href="#"><span class="fa fa-facebook-f"></span></a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-twitter"></span></a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-linkedin"></span></a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-telegram"></span></a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-google-plus"></span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1"
+            aria-expanded="false"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../../uznews.com/"
+            ><img src="{% static 'img/logo.png' %}" alt=""
+          /></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1"
+            aria-expanded="false"
+          >
+            <i class="fa fa-close"></i>
+          </button>
+          <ul class="nav navbar-nav">
+            <li><a href="../category/economics">экономика</a></li>
+            <li><a href="../category/politics">политика</a></li>
+            <li><a href="../category/community">общество</a></li>
+            <li><a href="../category/culture">культура</a></li>
+            <li><a href="../category/sports">спорт</a></li>
+            <li><a href="../category/global">в мире</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <a href="#" class="bigrek"></a>
+    <div class="container wrapper">
+      <div class="longrek"></div>
+      <div class="clearfix"></div>
+
+      <ol class="breadcrumb">
+        <li><a href="#">Главная</a></li>
+        <li class="active">Контакты</li>
+      </ol>
+
+
+      
+      <div class="row">
+        <div class="col-md-5 col-xs-12">
+          <div class="cat_title">Контакты</div>
+          <div class="con_info">
+            Интернет-издание 1news.uz освещает общественно-политическую,
+            социально-экономическую, культурную, спортивную жизнь Узбекистана и
+            события происходящие в мире.
+          </div>
+          <ul class="contact">
+            <li>
+              <i class="fa fa-map-marker"></i> г. Ташкент, улица Эркинлик, дом
+              108
+            </li>
+            <li><i class="fa fa-print"></i> 0(371) 215-79-79</li>
+            <li><i class="fa fa-mobile"></i> 99897 738-14-14</li>
+            <li><i class="fa fa-envelope"></i> info@1news.uz</li>
+          </ul>
+          <div class="feedback">
+            <div class="title">Обратная связь</div>
+            <form action="#">
+              <input type="text" name="name" placeholder="Ваше имя" />
+              <input type="text" name="name" placeholder="Ваше email" />
+              <textarea
+                name=""
+                id=""
+                cols="30"
+                rows="10"
+                placeholder="Сообщение"
+              ></textarea>
+              <button class="btn submit">Отправить</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-7 col-xs-12">
+          <div class="con_img">
+            <img src="{% static 'img/contact.jpg' %}" alt="" />
+          </div>
+          <div class="map"></div>
+        </div>
+      </div>
+      <div class="foot_rek">
+        <img src="{% static 'img/foootrek.jpg' %}" alt="" />
+      </div>
+    </div>
+
+    <div class="foot_about">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-xs-12">
+            <img src="{% static 'img/logo.png' %}" alt="" class="logo" />
+          </div>
+          <div class="col-md-6 col-xs-12">
+            <div class="title">О нас</div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+              commodo ligula eget dolor. Aenean massa. Cum sociis natoque
+              penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+              Donec quam felis, ultricies nec
+            </p>
+          </div>
+          <div class="col-md-3 col-xs-12 text-right">
+            <ul class="social">
+              <li>
+                <a href="#"><span class="fa fa-facebook-f"></span></a>
+              </li>
+              <li>
+                <a href="#"><span class="fa fa-twitter"></span></a>
+              </li>
+              <li>
+                <a href="#"><span class="fa fa-linkedin"></span></a>
+              </li>
+              <li>
+                <a href="#"><span class="fa fa-telegram"></span></a>
+              </li>
+              <li>
+                <a href="#"><span class="fa fa-google-plus"></span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <ul class="menu">
+          <li><a href="#">о нас</a></li>
+          <li><a href="#">контакты</a></li>
+          <li><a href="#">редакционная</a></li>
+          <li><a href="#">ОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a></li>
+          <li><a href="#">СОГЛАШЕНИЕ</a></li>
+        </ul>
+        <div class="copyright">© COPYRIGHT 2017 BY <a href="#">md</a></div>
+      </div>
+    </footer>
+ {% endblock %}
+ 
+ </html>

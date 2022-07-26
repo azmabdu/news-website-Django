@@ -1,0 +1,1048 @@
+{% extends 'firstapp/base.html'%}
+{% load static %}
+
+
+{% block body %}
+     <div class="topheader">
+      <div class="container">
+        <ul class="menu">
+          <li><a href="">о нас</a></li>
+          <li><a href="#">редакционная</a></li>
+          <li><a href="category/">политика</a></li>
+          <li><a href="contact/">контакты</a></li>
+        </ul>
+        <ul class="kurs">
+          <li>1 USD = {{usd_to_sum}}</li>
+          <li>1 EUR = {{eur_to_sum}}</li>
+          <li>1 RUB = {{rub_to_sum}}</li>
+        </ul>
+        <ul class="lang">
+          <li class="active"><a href="#">Ру</a></li>
+          <li><a href="">O'z</a></li>
+          <li><a href="">Уз</a></li>
+        </ul>
+        <ul class="social">
+          <li>
+            <a href="#"><span class="fa fa-facebook-f"></span></a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-twitter"></span></a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-linkedin"></span></a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-telegram"></span></a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-google-plus"></span></a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-rss"></span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1"
+            aria-expanded="false"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../uznews.com/"=
+            ><img src="{% static 'img/logo.png' %}" alt=""  
+          /></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1"
+            aria-expanded="false"
+          >
+            <i class="fa fa-close"></i>
+          </button>
+          <ul class="nav navbar-nav">
+            <li><a href="category/economics">экономика</a></li>
+            <li><a href="category/politics">политика</a></li>
+            <li><a href="category/community">общество</a></li>
+            <li><a href="category/culture">культура</a></li>
+            <li><a href="category/sports">спорт</a></li>
+            <li><a href="category/global">в мире</a></li>
+           </ul>
+
+          <button type="button" class="btn navbar-right search_btn hidden-xs">
+            <i class="fa fa-search"></i>
+          </button>
+
+
+          <form
+            action="{% url "search" %}" 
+            method="get"
+            id="q"
+            type="text"
+            class="navbar-form navbar-right search_btn_box hidden-xs"
+          >
+            <button class="btn btn-default" type="button">
+              <span><i class="fa fa-search"></i></span>
+            </button>
+            <div class="input-group">
+              <input
+                type="text"
+                name="q"
+                id="searchName"
+                class="form-control"
+                placeholder="Поиск..."
+                required=""
+              />
+              <input type="submit" hidden="" />
+            </div>
+            <button type="button" class="btn search_btn_close hidden-xs active">
+              <i class="fa fa-close"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <a href="#" class="bigrek"></a>
+    <div class="container wrapper">
+      <div class="longrek"></div>
+      <div class="l_news">
+        <div class="title">Актуальные</div>
+        <div class="l_news_box">
+          <div id="littlenews" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+
+            {% for object in objects %}
+              {% if forloop.counter <= 1 %}
+                 <div class="item active">
+                  <a href="view/{{ object.id }}">{{ object.title }}</a>
+                </div>
+              {% elif forloop.counter <= 4 and forloop.counter > 1 %}
+                    <div class="item ">
+                <a href="view/{{ object.id }}">{{ object.title }}</a>
+                </div>
+              {% endif %}
+            {% endfor %}
+
+            </div>
+            <a
+              class="left carousel-control"
+              href="#littlenews"
+              role="button"
+              data-slide="prev"
+            >
+              <i class="fa fa-angle-left"></i>
+            </a>
+
+            <a
+              class="right carousel-control"
+              href="#littlenews"
+              role="button"
+              data-slide="next"
+            >
+              <i class="fa fa-angle-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+      <div class="fav_news"> 
+        <div class="big_fav">
+          <div class="col-md-14 col-xs-16">
+
+          <div id="bigfav" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+
+            {% for object in objects %}
+            {% if forloop.counter <= 1  %} 
+              <div class="item active">
+                <img src="{{ object.title_photo.url }}" alt="..." />
+                 <a href="view/{{ object.id }}">
+                  <div class="carousel-caption">
+                    <div class="caption_pos">
+                      <div class="type_news">{{ object.section }}</div>
+                      <div class="title">{{ object.title }}</div>
+                      <span class="date">{{ object.date_created|date:"m-d-Y" }}</span>
+                      <span class="com_count"
+                        ><span class="fa fa-comments"></span> 125
+                      </span>
+                    </div>
+                  </div>
+                </a>
+                </div>
+
+              {% elif forloop.counter <= 5 and forloop.counter > 1 %}
+                <div class="item">
+                <img src="{{ object.title_photo.url }}" alt="..." />
+                 <a href="view/{{ object.id }}">
+                  <div class="carousel-caption">
+                    <div class="caption_pos">
+                      <div class="type_news">{{ object.section }}</div>
+                      <div class="title">{{ object.title }}</div>
+                      <span class="date">{{ object.date_created|date:"m-d-Y" }}</span>
+                      <span class="com_count"
+                        ><span class="fa fa-comments"></span> 125
+                      </span>
+                    </div>
+                  </div>
+                </a>
+                </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <div class="control">
+              <a
+                class="left carousel-control"
+                href="#bigfav"
+                role="button"
+                data-slide="prev"
+              >
+                <i class="fa fa-angle-left"></i>
+              </a>
+              <a
+                class="right carousel-control"
+                href="#bigfav"
+                role="button"
+                data-slide="next"
+              >
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </div>
+          </div>
+        </div> 
+        </div> 
+ 
+  
+        <div class="list_fav">
+          <div class="title"><b>Актуальные</b> новости</div>
+        {% for object in objects %}
+          {% if forloop.counter >= 6 and forloop.counter < 9 %}
+          <ul>
+            <li>
+              <a href="view/{{ object.id }}">
+                <div class="list_fimg">
+                  <img src="{{object.title_photo.url}}" alt="" />
+                </div>
+                <span class="list_type">{{ object.section }}</span>
+                <span class="list_title">{{ object.title }}</span>
+                <span class="date">{{ object.date_created|date:"m-d-Y"}}</span>
+              </a>
+            </li>
+          {% endif %}
+          {% endfor %}
+          
+          </ul>
+          <a href="#" class="more">больше актуальные новости</a>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="head_title">популярные новости</div>
+      <div class="popular">
+        <div class="row">
+
+          {% for object in objects %} 
+            {% if forloop.counter >= 9 and forloop.counter < 13%}
+             
+          <div class="col-md-3 col-xs-12">
+            <div class="p_img">
+              <img src="{{object.title_photo.url}}" alt="" />
+            </div>
+            <a href="view/{{ object.id }}"
+              >{{object.title}}</a
+            >
+            <span class="date">{{ object.date_created|date:"m-d-Y" }}</span>
+            <span class="p_type"><i class="fa fa-pencil"></i> {{ object.section }}</span>
+            </div>
+            {% endif %}
+          {% endfor %}
+
+        </div>
+      </div>
+      <a href="#" class="big_more">больше новости</a>
+      <div class="rek1"></div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-xs-12">
+
+          <div class="head_title">СПОРТ</div>
+          
+          <div class="news_box">
+            <div class="row">
+ 
+            {% for object in sports_objects %}
+              {% if forloop.counter <= 1 %}
+                <div class="col-md-6 col-xs-12">
+                 <div class="big_news">
+
+                  <div class="big_n_img">
+                    <img src="{{ object.title_photo.url }}" alt="" />
+                  </div>
+                  <a href="view/{{ object.id }}"
+                    >{{ object.title }}</a
+                  >
+                  <span class="date">{{ object.date_created|date:"m-d-Y" }}</span>
+                  <span class="news_type"
+                    ><i class="fa fa-pencil"></i>{{ object.section }}</span
+                  >
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+    
+
+         
+               <div class="col-md-6 col-xs-12">
+                <ul class="list_news">
+                  {% for object in sports_objects %}
+                   {% if forloop.counter > 1 and forloop.counter <= 5 %}
+                      <li>
+                         <div class="list_img">
+                      <img src="{{object.title_photo.url}}" alt="" />
+                          </div>
+                    <a href="view/{{ object.id }}"
+                      >{{ object.title }}</a>
+                    <span class="date">{{ object.date_created|date:"m-d-Y" }}</span>
+                    <span class="news_type"
+                      ><i class="fa fa-pencil"></i>{{object.section}}</span
+                    >
+                  </li>
+                    {% endif%}
+                    {% endfor %}
+
+                 </ul>
+              </div>
+           </div>
+          </div>
+           <a href="#" class="big_more">больше новостей</a>
+           
+          <div class="head_title">ПОЛИТИКА</div>
+          <div class="news_box">
+          <div class="row">
+
+          {% for object in politics_objects %}
+          {% if forloop.counter <= 2%}
+              <div class="col-md-6 col-xs-12">
+                <div class="big_news">
+                  <div class="big_n_img">
+                    <img src="{{ object.title_photo.url }}" alt="" />
+                  </div>
+                  <a href="view/{{ object.id }}"
+                    >{{ object.title }}</a
+                  >
+                  <span class="date">{{ object.date_created|date:"m-d-Y" }}</span>
+                  <span class="news_type"
+                    ><i class="fa fa-pencil"></i>{{ object.section }}</span
+                  >
+                  <div class="desc">
+                    {{ object.paragraph1 }}
+                  </div>
+                </div>
+              </div>
+ 
+        {% endif %}
+        {% endfor %}
+
+         </div>
+          </div>
+          
+          <div class="news_box">
+            <div class="row">
+                <ul class="list_news">
+
+                {% for object in politics_objects %}
+                {% if forloop.counter <= 10 and forloop.counter >= 3 %}
+                 <div class="col-md-6 col-xs-12">
+
+                   <li>
+                    <div class="list_img">
+                      <img src="{{object.title_photo.url}}" alt="" />
+                    </div>
+                    <a href="view/{{ object.id }}"
+                      >{{ object.title }} </a
+                    >
+                    <span class="date">{{object.date_created|date:"m-d-Y"}}</span>
+                    <span class="news_type"
+                      ><i class="fa fa-pencil"></i>{{object.section}}</span
+                    >
+                  </li>
+
+                </div>  
+                {% endif %}
+                {% endfor %}
+                    </ul>
+            </div>
+          </div>
+          <a href="#" class="big_more">больше новостей</a>
+        </div>
+
+        <div class="col-md-4 col-xs-12">
+          <div class="head_title">Свежие новости</div>
+          <div
+            id="listnews"
+            class="carousel slide listnews"
+            data-ride="carousel"
+          >
+            <div class="news_box">
+              <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                  <ul class="list_news">
+
+                    {% for object in recent_news %}
+                    {% if forloop.counter <= 4 %}
+                    <li>
+                      <div class="list_img">
+                        <img src="{{ object.title_photo.url }}" alt="" />
+                      </div>
+                      <a href="view/{{ object.id }}"
+                        >{{ object.title }}</a
+                      >
+                      <span class="date">{{ object.date_created|date:"m-d-Y"}}</span>
+                      <span class="news_type"
+                        ><i class="fa fa-pencil"></i>{{ object.section }}</span
+                      >
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div class="item">
+                  <ul class="list_news">
+                    {% for object in recent_news %}
+                    {% if forloop.counter > 4 and forloop.counter <= 8%}
+                    <li>
+                      <div class="list_img">
+                        <img src="{{ object.title_photo.url }}" alt="" />
+                      </div>
+                      <a href="view/{{ object.id }}"
+                        >{{ object.title }}</a
+                      >
+                      <span class="date">{{ object.date_created|date:"m-d-Y"}}</span>
+                      <span class="news_type"
+                        ><i class="fa fa-pencil"></i>{{ object.section }}</span
+                      >
+                    </li>
+
+                    {% endif %}
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="indi_box">
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#listnews"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#listnews" data-slide-to="1"></li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="head_title colum">Колумнисты</div>
+
+          <div class="news_box colums">
+            <ul class="list_news">
+              {% for i in '012345'|make_list %}
+                <li>
+                <div class="list_img">
+                  <img src="{% static "img/ava.jpg"%}" alt="" />
+                </div>
+                <a href="#">АЛО ХОДЖАЕВ.</a>
+                <div class="col_type">Журналист, кандидат философских наук</div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="news_box rek">
+            <div class="rek_right"></div>
+          </div>
+
+             <div class="subscribe">
+            <div class="title">Subscribe to <b>uznews.uz</b></div>
+            <form action="{% url "email" %}"
+                  method="POST"
+                  id="email"
+                  type="text">
+              {% csrf_token %}
+
+               <div class="input-group">
+                <input type="text" name="email" placeholder="Email"/>
+                <button class="submit">Subscribe</button>
+              </div>
+            </form>
+          </div>
+       
+
+        </div>
+      </div>
+    </div>
+
+    <div class="culture">
+      <div class="container">
+        <div class="title">КУЛЬТУРА</div>
+        <div id="culture" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#culture" data-slide-to="0" class="active"></li>
+            <li data-target="#culture" data-slide-to="1"></li>
+          </ol>
+          <div class="carousel-inner" role="listbox" href="/">
+            <div class="item active">
+              
+            {% for object in culture_objects %}
+            {%  if forloop.counter <= 1 %}
+              <div class="big_cult">
+                <img src="{{ object.title_photo.url }}" alt="" />
+                <a href="view/{{ object.id }}">
+                  <div class="caption">
+                   {{ object.title }}
+                  </div>
+                </a>
+              </div>
+
+              {% elif forloop.counter <= 5 %}
+              <div class="little_cult">
+                <img src="{{ object.title_photo.url }}" alt="" />
+                <a href="view/{{ object.id }}">
+                  <div class="caption">
+                    {{ object.title }}
+                  </div>
+                </a>
+              </div>
+              {% endif %}
+              {% endfor %}
+          
+            </div>
+
+        <div class="item">
+            {% for object in culture_objects %}
+            {%  if forloop.counter <= 1 %}
+              <div class="big_cult">
+                <img src="{{ object.title_photo.url }}" alt="" />
+                <a href="view/{{ object.id }}">
+                  <div class="caption">
+                   {{ object.title }}
+                  </div>
+                </a>
+              </div>
+
+              {% elif forloop.counter <= 5%}
+              <div class="little_cult">
+                <img src="{{ object.title_photo.url }}" alt="" />
+                <a href="view/{{ object.id }}">
+                  <div class="caption">
+                    {{ object.title }}
+                  </div>
+                </a>
+              </div>
+              {% endif %}
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+        <a href="#" class="more">больше новостей</a>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-xs-12">
+          <div class="head_title">ОБЩЕСТВО</div>
+          <div class="news_box">
+            <div class="row">
+
+          {% for object in community_objects %}
+            {% if forloop.counter <= 2 %}
+              <div class="col-md-6 col-xs-12">
+                <div class="big_news">
+                  <div class="big_n_img">
+                    <img src="{{ object.title_photo.url }}" alt="" />
+                  </div>
+                  <a href="view/{{ object.id }}"
+                    >{{ object.title }}</a
+                  >
+                  <span class="date">{{ object.date_created|date:"m-d-Y" }}</span>
+                  <span class="news_type"
+                    ><i class="fa fa-pencil"></i>{{ object.section }}</span
+                  >
+                  <div class="desc">
+                   {{ object.paragraph1 }}
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+            {% endfor %}
+            </div>
+          </div>
+
+
+          <div class="news_box">
+            <div class="row">
+
+              <div class="col-md-6 col-xs-12">
+                <ul class="list_news">
+
+                  {% for object in community_objects %}
+                  {% if forloop.counter > 2 and forloop.counter <= 7 %}
+                  <li>
+                    <div class="list_img">
+                      <img src="{{ object.title_photo.url }}" alt="" />
+                    </div>
+                    <a href="view/{{ object.id }}"
+                      >{{ object.title }}</a
+                    >
+                    <span class="date">{{ object.date_created|date:"m-d-Y"}}</span>
+                    <span class="news_type"
+                      ><i class="fa fa-pencil"></i>{{ object.section }}</span
+                    >
+                  </li>
+                  {% endif %}
+                  {% endfor %}
+
+                </ul>
+              </div>
+
+              <div class="col-md-6 col-xs-12">
+                <ul class="list_news">
+
+                  {% for object in community_objects %}
+                  {% if forloop.counter > 7 and forloop.counter <= 12 %}
+                   <li>
+                    <div class="list_img">
+                      <img src="{{ object.title_photo.url }}" alt="" />
+                    </div>
+                    <a href="view/{{ object.id }}"
+                      >{{ object.title }}</a
+                    >
+                    <span class="date">{{ object.date_created|date:"m-d-Y"}}</span>
+                    <span class="news_type"
+                      ><i class="fa fa-pencil"></i>{{ object.section }}</span
+                    >
+                  </li>
+                  {% endif %}
+                  {% endfor %}
+
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+          <a href="#" class="big_more">больше новосетей</a>
+          <div class="head_title">В мире</div>
+          <div class="news_box">
+            <div class="row">
+
+              {% for object in world_objects %}
+              {% if forloop.counter <= 2 %}
+              <div class="col-md-6 col-xs-12">
+                <div class="big_news">
+                  <div class="big_n_img">
+                    <img src="{{ object.title_photo.url }}" alt="" />
+                  </div>
+                  <a href="view/{{ object.id }}"
+                    >{{ object.title }}</a
+                  >
+                  <span class="date">{{ object.date_created|date:"m-d-Y"}}</span>
+                  <span class="news_type"
+                    ><i class="fa fa-pencil"></i>{{ object.section }}</span
+                  >
+                  <div class="desc">
+                 {{ object.paragraph1 }}
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              {% endfor %}
+            
+            </div>
+          </div>
+
+
+          <div class="news_box">
+            <div class="row">
+
+
+              <div class="col-md-6 col-xs-12">
+                <ul class="list_news">
+                  
+                  {% for object in objects %}
+                  {% if forloop.counter <= 7 and forloop.counter > 2%}
+                  <li>
+                    <div class="list_img">
+                      <img src="{{ object.title_photo.url }}" alt="" />
+                    </div>
+                    <a href="view/{{ object.id }}"
+                      >{{ object.title }}</a
+                    >
+                    <span class="date">{{ object.date_created|date:"m-d-Y" }}</span>
+                    <span class="news_type"
+                      ><i class="fa fa-pencil"></i>{{ object.section }}</span
+                    >
+                  </li>
+                  {% endif %}
+                  {% endfor %}
+
+                </ul>
+              </div>
+
+
+              <div class="col-md-6 col-xs-12">
+                <ul class="list_news">
+
+ 
+                  {% for object in objects %}
+                  {% if forloop.counter > 7 and forloop.counter <= 12 %}
+                  <li>
+                    <div class="list_img">
+                      <img src="{{ object.title_photo.url }}" alt="" />
+                    </div>
+                    <a href="view/{{ object.id }}"
+                      >{{ object.title }}</a
+                    >
+                    <span class="date">{{ object.date_created|date:"m-d-Y"}}</span>
+                    <span class="news_type"
+                      ><i class="fa fa-pencil"></i>{{ object.section }}</span
+                    >
+                  </li>
+                  {% endif %}
+                  {% endfor %}
+
+                </ul>
+              </div>
+
+
+            </div>
+          </div>
+          <a href="#" class="big_more">больше новостей</a>
+        </div>
+
+
+
+        <div class="col-md-4 col-xs-12">
+          <div class="head_title">ТЕХНОЛОГИИ</div>
+          <div
+            id="technews"
+            class="carousel slide listnews technonews"
+            data-ride="carousel"
+          >
+            <div class="carousel-inner" role="listbox">
+
+
+            {% for object in tech_objects %}
+            {% if forloop.counter <= 1 %}
+              <div class="item active">
+                <div class="full_img">
+                  <img src="{{ object.title_photo.url }}" alt="" />
+                </div>
+                <div class="news_box">
+                  <a href="view/{{ object.id }}"
+                    >{{ object.title }}</a
+                  >
+                  <p>
+                   {{ object.paragraph1 }}
+                  </p>
+                </div>
+              </div>
+
+              {% elif forloop.counter <= 2 %} 
+              <div class="item">
+                <div class="full_img">
+                  <img src="{{ object.title_photo.url }}" alt="" />
+                </div>
+                <div class="news_box">
+                  <a href="view/{{ object.id }}"
+                    >{{ object.title }}</a
+                  >
+                  <p>
+                   {{ object.paragraph1 }}
+                  </p>
+                </div>
+              </div>
+              {% endif %}
+              {% endfor %}
+
+            </div>
+
+
+            <div class="indi_box">
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#technews"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#technews" data-slide-to="1"></li>
+              </ol>
+            </div>
+          </div>
+
+
+          <div class="head_title">ЭКОНОМИКА</div>
+          <div
+            id="econews"
+            class="carousel slide listnews"
+            data-ride="carousel"
+          >
+            <div class="news_box">
+              <div class="carousel-inner" role="listbox">
+
+
+                <div class="item active">
+                  <ul class="list_news">
+
+                  {% for object in economy_objects %}
+                      {% if forloop.counter <= 3 %}
+                   <li>
+                      <div class="list_img">
+                        <img src="{{ object.title_photo.url }}" alt="" />
+                      </div>
+                      <a href="view/{{ object.id }}"
+                        >{{ object.title }}</a
+                      >
+                      <span class="date">{{ object.date_created|date:"m-d-Y" }}</span>
+                      <span class="news_type"
+                        ><i class="fa fa-pencil"></i>{{ object.section }}</span
+                      >
+                    </li>
+                    {% endif %}
+                  {% endfor %}
+
+                    
+                  </ul>
+                </div>
+                <div class="item">
+                  <ul class="list_news">
+
+                  {% for object in economy_objects %}
+                      {% if forloop.counter > 3 and forloop.counter <= 6 %}
+                   <li>
+                      <div class="list_img">
+                        <img src="{{ object.title_photo.url }}" alt="" />
+                      </div>
+                      <a href="view/{{ object.id }}"
+                        >{{ object.title }}</a
+                      >
+                      <span class="date">{{ object.date_created|date:"m-d-Y"}}</span>
+                      <span class="news_type"
+                        ><i class="fa fa-pencil"></i>{{ object.section }}</span
+                      >
+                    </li>
+                    {% endif %}
+                  {% endfor %}
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="indi_box">
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#econews"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#econews" data-slide-to="1"></li>
+              </ol>
+            </div>
+          </div>
+          <div class="head_title photo_news">НОВОСТИ В ФОТО</div>
+          <div
+            id="technews"
+            class="carousel slide listnews"
+            data-ride="carousel"
+          >
+            <div class="carousel-inner" role="listbox">
+
+            {% for object in objects %}
+            {% if forloop.counter == 1%}
+              <div class="item active">
+
+                <div class="full_img">
+                  <img src="{{ object.title_photo.url }}" alt="" />
+                </div>
+                <div class="news_box">
+                  <a href="view/{{ object.id }}"
+                    >{{ object.title }}</a
+                  >
+                </div>
+
+              </div>
+
+              {% elif forloop.counter == 2 %}
+              <div class="item">
+                <div class="full_img">
+                  <img src="{{ object.title_photo.url }}" alt="" />
+                </div>
+                <div class="news_box">
+                  <a href="view/{{ object.id }}"
+                    >{{ object.title }}</a
+                  >
+                </div>
+              </div>
+              {% endif %}
+              {% endfor %}
+
+            </div>
+
+            <div class="indi_box">
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#technews"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#technews" data-slide-to="1"></li>
+              </ol>
+            </div>
+          </div>
+          <div class="head_title sport">СПОРТ</div>
+          <div
+            id="econews"
+            class="carousel slide listnews"
+            data-ride="carousel"
+          >
+            <div class="news_box">
+              <div class="carousel-inner" role="listbox">
+
+
+                <div class="item active">
+                  <ul class="list_news">
+
+                    {% for object in sports_objects %}
+                      {% if forloop.counter <= 5%}
+                    <li>
+                      <div class="list_img">
+                        <img src="{{ object.title_photo.url }}" alt="" />
+                      </div>
+                      <a href="view/{{ object.id }}"
+                        >{{ object.title }}</a
+                      >
+                      <span class="date">{{object.date_created|date:"m-d-Y" }}</span>
+                      <span class="news_type"
+                        ><i class="fa fa-pencil"></i>{{ object.section }}</span
+                      >
+                    </li>
+                      {% endif %}
+                    {% endfor %}
+
+                  </ul>
+                </div>
+
+                <div class="item">
+                  <ul class="list_news">
+
+                      {% for object in objects %}
+                      {% if forloop.counter > 5 and forloop.counter <= 10 %}
+                    <li>
+                      <div class="list_img">
+                        <img src="{{ object.title_photo.url }}" alt="" />
+                      </div>
+                      <a href="view/{{ object.id }}"
+                        >{{ object.title }}</a
+                      >
+                      <span class="date">{{ object.date_created|date:"m-d-Y" }}</span>
+                      <span class="news_type"
+                        ><i class="fa fa-pencil"></i>{{ object.section }}</span
+                      >
+                    </li>
+                      {% endif %}
+                    {% endfor %}
+                  
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="indi_box">
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#econews"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#econews" data-slide-to="1"></li>
+              </ol>
+            </div>
+          </div>
+          <div class="head_title weather">Погода</div>
+          <div class="news_box">
+          {{weather}}°C &#127780</div>
+        </div>
+      </div>
+      <div class="foot_rek">
+        <img src="{% static 'img/foootrek.jpg' %}" alt="" />
+      </div>
+    </div>
+    <div class="foot_about">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-xs-12">
+            <img src="{%static "img/logo.png"%}" alt="" class="logo" />
+          </div>
+          <div class="col-md-6 col-xs-12">
+            <div class="title">О нас</div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+              commodo ligula eget dolor. Aenean massa. Cum sociis natoque
+              penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+              Donec quam felis, ultricies nec
+            </p>
+          </div>
+          <div class="col-md-3 col-xs-12 text-right">
+            <ul class="social">
+              <li>
+                <a href="#"><span class="fa fa-facebook-f"></span></a>
+              </li>
+              <li>
+                <a href="#"><span class="fa fa-twitter"></span></a>
+              </li>
+              <li>
+                <a href="#"><span class="fa fa-linkedin"></span></a>
+              </li>
+              <li>
+                <a href="#"><span class="fa fa-telegram"></span></a>
+              </li>
+              <li>
+                <a href="#"><span class="fa fa-google-plus"></span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <ul class="menu">
+          <li><a href="#">о нас</a></li>
+          <li><a href="contact/">контакты</a></li>
+          <li><a href="#">редакционная</a></li>
+          <li><a href="#">ОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a></li>
+          <li><a href="#">СОГЛАШЕНИЕ</a></li>
+        </ul>
+        <div class="copyright">© COPYRIGHT 2017 BY <a href="#">md</a></div>
+      </div>
+    </footer>
+{% endblock %}
+
+
+</html>

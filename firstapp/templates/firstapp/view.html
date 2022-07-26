@@ -1,0 +1,286 @@
+{% extends 'firstapp/base.html' %}
+{% load static %}
+
+
+{% block body %}
+ 	<div class="topheader">
+		<div class="container">
+			<ul class="menu">
+				<li><a href="#">о нас</a></li>
+				<li><a href="#">редакционная</a></li>
+				<li><a href="#">политика</a></li>
+				<li><a href="#">контакты</a></li>
+			</ul>
+			<ul class="kurs">
+				  <li>1 USD = {{usd_to_sum}}</li>
+          <li>1 EUR = {{eur_to_sum}}</li>
+          <li>1 RUB = {{rub_to_sum}}</li>
+			</ul>
+			<ul class="lang">
+				<li><a href="">En</a></li>
+				<li class="active"><a href="#">Ru</a></li>
+				<li><a href="">Uz</a></li>
+			</ul>
+			<ul class="social">
+				<li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
+				<li><a href="#"><span class="fa fa-twitter"></span></a></li>
+				<li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+				<li><a href="#"><span class="fa fa-telegram"></span></a></li>
+				<li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+			</ul>
+		</div>
+	</div>
+	<nav class="navbar">
+  	<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="../"><img src="{% static 'img/logo.png' %}"  alt=""></a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<i class="fa fa-close"></i>
+				</button>
+				<ul class="nav navbar-nav">
+					<li><a href="../category/economics">экономика</a></li>
+            <li><a href="../category/politics">политика</a></li>
+            <li><a href="../category/community">общество</a></li>
+            <li><a href="../category/culture">культура</a></li>
+            <li><a href="../category/sports">спорт</a></li>
+            <li><a href="../category/global">в мире</a></li>
+ 				</ul>
+
+			</div>
+		</div>
+	</nav>
+	<a href="#" class="bigrek"></a>
+	<div class="container wrapper">
+		<div class="longrek"></div>
+		<div class="clearfix"></div>
+		<ol class="breadcrumb">
+			<li><a href="#">Главная</a></li>
+			<li><a href="#">{{ object.section }}</a></li>
+			<li class="active"> {{ object.title }}</li>
+ 		</ol>
+		<div class="row">
+			<div class="col-md-8 col-xs-12">
+				<div class="view_img"><img src="{{ object.title_photo.url }}" alt=""></div> 
+				<div class="news_box view">
+					<div class="view_title">{{ object.title }}</div>
+					<span class="date">{{ object.date_created }}</span>
+					<span class="news_type"><i class="fa fa-pencil"></i>{{ object.section }}</span>
+					<div class="view_desc">
+					{% if object.paragraph1 %}
+					 {{ object.paragraph1 }}
+					 <br><br>
+					{% endif %}
+
+					{% if object.photo1.url != None%}
+						<div class="view_img"><img src="{{object.photo1.url}}" alt=""></div> 
+					{% endif %} 
+
+					{% if object.paragraph2 %}
+					 {{object.paragraph2}} 
+					  <br><br>
+					{% endif %}
+
+					{% if object.photo2.url != None %}
+						<div class="view_img"><img src="{{object.photo2.url}}" alt=""></div> 
+					{% endif %}				 
+
+					{% if object.paragraph3 %}
+					 {{object.paragraph3}}
+						<br><br>
+					{% endif %}
+
+					{% if object.photo3.url != None %}
+						<div class="view_img"><img src="{{object.photo3.url}}" alt=""></div> 
+					{% endif %}		
+
+					{% if object.paragraph4 %}
+					 {{object.paragraph4}}
+					   <br><br>
+					{% endif %}
+
+					{% if object.photo4.url != None %}
+						<div class="view_img"><img src=" {{object.photo4.url}}" alt=""></div> 
+					{% endif %}
+
+					{% if object.paragraph5 %}
+					 {{object.paragraph5}}
+					 	<br><br>
+					{% endif %}
+					
+					{% if object.photo5.url != None %}
+						<div class="view_img"><img src=" {{object.photo5.url}}" alt=""></div> 
+					{% endif %}
+				</div>
+				<ul class="tag">
+				{% if object.tag1 %}
+						<li><a href="#">#{{object.tag1}}</a></li>
+				{% endif %}
+
+				{% if object.tag2 %}
+						<li><a href="#">#{{object.tag2}}</a></li>
+				{% endif %}
+
+				{% if object.tag3 %}
+						<li><a href="#">#{{object.tag3}}</a></li>
+				{% endif %}
+
+				{% if object.tag4 %}
+						<li><a href="#">#{{object.tag4}}</a></li>
+				{% endif %}
+
+				</ul>
+				<div class="nav_news">
+					<a href="{{ previous_object.id }}" class="prev_news text-right">
+						<i class="fa fa-angle-left"></i>
+						{{ previous_object.title }}
+					</a>
+					<a href="{{ next_object.id }}" class="next_news">
+						{{ next_object.title }}
+						<i class="fa fa-angle-right"></i>
+					</a>
+					<div class="clearfix"></div>
+				</div>
+				<div class="comment">
+					<div class="title">Комменты</div>
+					
+ 					<ul>
+					 	{% for comment in comments %}
+						<li>
+							<div class="com_img"><img src="{{ comment.user.profile_picture.url }}" alt=""></div>
+							<div class="com_info">
+								<div class="author">{{ comment.user.username }}</div>
+								<p>{{ comment.body }}</p>
+								<div class="date">{{ comment.date_posted }}</div>
+								<hr>
+							</div>
+
+							 
+							<ul class="sub">
+							{% for subcomment in subcomments %}
+								{% if subcomment.base_comment == comment%}
+								<li>
+									<div class="com_img"><img src="{{ subcomment.user.profile_picture.url }}" alt=""></div>
+									<div class="com_info">
+										<div class="author">{{ subcomment.user.username }}</div>
+										<p>{{ subcomment.body }}</p>
+										<div class="date">{{ subcomment.date_posted }}</div>
+										<hr>
+									</div>
+								</li>
+								{% endif %}
+							{% endfor %}
+ 							</ul>
+						</li>
+						{% endfor %}
+					</ul>
+					<button class="btn add_comment" ><a href="comment/{{ object.id }}">Add comment</a></button>
+
+					<div class="add_info">Приветствуются интересные и осмысленные комментарии по теме материала.</div>
+				</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-xs-12">
+				<div class="head_title">Свежие новости</div>
+				<div id="listnews" class="carousel slide listnews" data-ride="carousel">
+					<div class="news_box">
+						<div class="carousel-inner" role="listbox">
+							<div class="item active">
+								<ul class="list_news">
+									{% for object in recent_news %}
+										{% if forloop.counter <= 4 %}
+									<li>
+										<div class="list_img"><img src="{{ object.title_photo.url }}" alt=""></div>
+										<a href="view/{{ object.id }}">{{ object.title }}</a>
+										<span class="date">{{ object.date_created|date:"m-d-Y" }}{</span>
+										<span class="news_type"><i class="fa fa-pencil"></i>{{ object.section }}</span>
+									</li>
+										{% endif %}
+									{% endfor %}
+								</ul>
+							</div>
+							<div class="item">
+								<ul class="list_news">
+									{% for object in recent_news %}
+										{% if forloop.counter > 4 and forloop.counter <= 8 %}
+									<li>
+										<div class="list_img"><img src="{{ object.title_photo.url }}" alt=""></div>
+										<a href="view/{{ object.id }}">{{ object.title }}</a>
+										<span class="date">{{ object.date_created|date:"m-d-Y" }}{</span>
+										<span class="news_type"><i class="fa fa-pencil"></i>{{ object.section }}</span>
+									</li>
+										{% endif %}
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="indi_box">
+						<ol class="carousel-indicators">
+							<li data-target="#listnews" data-slide-to="0" class="active"></li>
+							<li data-target="#listnews" data-slide-to="1"></li>
+						</ol>
+					</div>				
+				</div>
+				
+				<div class="news_box rek">
+					<div class="rek_right">
+						
+					</div>
+				</div>
+				<div class="subscribe">
+					<div class="title">Подписывайся на <b>1news.uz</b></div>
+					<form action="">
+						<div class="input-group">
+							<input type="text" name="email" placeholder="Email">
+							<button class="submit">Подписываться</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="foot_about">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-xs-12"><img src="{% static 'img/logo.png' %}" alt="" class="logo"></div>
+				<div class="col-md-6 col-xs-12">
+					<div class="title">О нас</div>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec</p>
+				</div>
+				<div class="col-md-3 col-xs-12 text-right">
+					<ul class="social">
+						<li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
+						<li><a href="#"><span class="fa fa-twitter"></span></a></li>
+						<li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+						<li><a href="#"><span class="fa fa-telegram"></span></a></li>
+						<li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="container">
+			<ul class="menu">
+				<li><a href="#">о нас</a></li>
+				<li><a href="#">контакты</a></li>
+				<li><a href="#">редакционная</a></li>
+				<li><a href="#">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a></li>
+				<li><a href="#">СОГЛАШЕНИЕ</a></li>
+			</ul>
+			<div class="copyright">
+				© COPYRIGHT 2017 BY <a href="#">md</a>
+			</div>
+		</div>
+	</footer>
+ {% endblock %}
+
+</html>

@@ -1,0 +1,288 @@
+@media (max-width:1024px) {
+    footer ul.menu,
+    .topheader ul.menu {
+        margin-right: 12px;
+    }
+    .topheader ul.social li,
+    .topheader ul.kurs li,
+    .topheader ul.menu li a {
+        margin-right: 5px;
+    }
+    .big_fav .item img {
+        width: 105%;
+        max-width: unset;
+    }
+    .list_fav .list_fimg {
+        width: 120px;
+    }
+    .list_fav .list_title {
+        font-size: 12px;
+        height: 53px;
+    }
+    .subscribe form .input-group button {
+        font-size: 11px;
+        height: 100%;
+        padding: 13px 10px;
+    }
+}
+
+@media (max-width:768px) {
+    .topheader ul.social li,
+    .topheader ul.kurs li,
+    .topheader ul.menu li a {
+        margin-right: 1px;
+    }
+    .feedback {
+        margin-bottom: 30px;
+    }
+    .topheader ul.kurs li,
+    footer,
+    .topheader {
+        font-size: 13px;
+    }
+    .topheader ul.social {
+        margin-right: 3px;
+    }
+    .topheader ul.lang li a {
+        margin-left: 0px;
+        display: block;
+    }
+    .full_img img {
+        width: 100%;
+        height: auto;
+    }
+    .subscribe form .input-group {
+        width: 100%;
+    }
+    .culture .little_cult img,
+    .culture .big_cult img {
+        height: 105%;
+        width: auto;
+    }
+    ul.navbar-nav li a {
+        font-size: 16px;
+        padding: 32px 0px;
+        margin: 0px 8px;
+    }
+    .big_news {
+        margin-bottom: 30px;
+    }
+    .list_fav a.more {
+        font-size: 12px;
+    }
+    .fav_news {
+        height: 426px;
+    }
+    .news_box .big_n_img img {
+        width: 100%;
+        height: auto;
+    }
+    .popular .p_img {
+        height: 210px;
+        overflow: hidden;
+        float: left;
+        margin-right: 30px;
+        margin-bottom: 30px;
+    }
+    .list_fav .list_fimg {
+        width: 90px;
+        margin-right: 5px;
+    }
+    .list_fav .list_type {
+        margin-bottom: 0;
+    }
+    .list_fav .list_fimg {
+        width: 90px;
+        height: 80px;
+    }
+    .big_fav .item img {
+        height: 105%;
+        max-width: unset;
+        width: auto;
+    }
+    ul.navbar-nav li a {
+        font-size: 16px;
+        padding: 32px 0px;
+        margin: 0px 8px;
+    }
+    .list_fav .title {
+        font-size: 16px;
+    }
+}
+
+@media (max-width:425px) {
+    .topheader {
+        display: none;
+    }
+    nav.navbar {
+        height: 77px;
+        margin-bottom: 0px;
+    }
+    .navbar-toggle {
+        position: relative;
+        float: right;
+        padding: 10px;
+        color: #fff;
+        font-size: 24px;
+    }
+    .navbar-toggle .icon-bar {
+        width: 28px;
+        margin: 7px 0px;
+        background-color: #000;
+    }
+    ul.navbar-nav {
+        padding-top: 100px;
+    }
+    ul.navbar-nav li a {
+        color: #fff;
+        text-align: center;
+        font-family: 'Ubuntu-L';
+        padding: 20px 0px;
+    }
+    .navbar-collapse.in {
+        height: 100%;
+        opacity: 1;
+        top: 0;
+    }
+    .navbar-collapse {
+        background-color: #000;
+        position: fixed;
+        width: 100%;
+        opacity: 0;
+        height: 0%;
+        top: -100px;
+        -webkit-transition: all .5s;
+        -o-transition: all .5s;
+        transition: all .5s;
+    }
+    .fav_news {
+        height: auto;
+    }
+    .fav_news .list_fav {
+        height: 420px;
+    }
+    .news_box .big_n_img {
+        height: 210px;
+    }
+    .culture .carousel .carousel-inner {
+        position: relative;
+        height: 500px;
+    }
+    .culture .little_cult {
+        width: 50%;
+        height: 25%;
+    }
+    .culture .big_cult {
+        height: 50%;
+        width: 100%;
+    }
+    .culture .big_cult a {
+        line-height: 28px;
+        font-size: 22px;
+    }
+    .culture .little_cult img,
+    .culture .big_cult img {
+        width: 110%;
+        height: auto;
+    }
+    .culture .little_cult .caption {
+        bottom: 8px;
+        height: 96px;
+        overflow: hidden;
+    }
+    .culture .little_cult a {
+        font-size: 16px;
+        font-family: 'Ubuntu-L';
+        line-height: 18px;
+    }
+    .foot_rek {
+        height: auto;
+    }
+    .big_fav .item .carousel-caption .title {
+        font-family: 'Ubuntu-M';
+        font-size: 21px;
+        line-height: 29px;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+    }
+    .add_info {
+        display: inline-block;
+        width: 268px;
+        font-size: 12px;
+        font-family: 'Ubuntu-M';
+        color: #9a9a9a;
+        padding-top: 0;
+        padding-left: 21px;
+    }
+    .view_img {
+        height: auto;
+    }
+    .view_slide {
+        height: 274px;
+        margin: 30px 0px 59px 0px;
+    }
+    .view .view_desc {
+        text-align: justify;
+    }
+    .view_title {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+    .cat_news .cat_img img {
+        width: 100%;
+        height: auto;
+    }
+    .cat_news .cat_img {
+        height: 178px;
+        width: 100%;
+        overflow: hidden;
+        float: unset;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .foot_about .col-xs-12 {
+        padding-bottom: 30px;
+        text-align: left;
+    }
+    .copyright {
+        margin: 5px 0px;
+        float: unset;
+    }
+    .fav_news .list_fav,
+    .fav_news .big_fav {
+        width: 100%;
+        float: unset
+    }
+    footer {
+        font-size: 14px;
+    }
+    footer ul.menu {
+        margin-right: 0;
+        width: 100%;
+    }
+    .foot_about {
+        padding: 60px 0px 30px 0px;
+    }
+    .popular .col-xs-12 {
+        padding-bottom: 30px;
+    }
+    .popular .p_img img {
+        width: 100%;
+        height: auto;
+    }
+    .popular .p_img {
+        display: block;
+        float: unset;
+        width: 100%;
+        margin-right: 0;
+    }
+    .fav_news .big_fav {
+        height: 400px;
+    }
+    body {
+        background: #f1f1f1 url(../img/bigrek.jpg) 50% 78px no-repeat;
+    }
+    .l_news {
+        display: none;
+    }
+}
