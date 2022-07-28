@@ -1,4 +1,5 @@
 This is a news website repo. While Python(Django) has been used to implement the website's server-side backend, JavaScript, Bootstrap, CSS/HTML used for frontend. 
+
 Main features:
   - Publishing news through admin dashboard
   - Commenting and subcommenting the publications
