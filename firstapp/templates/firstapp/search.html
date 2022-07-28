@@ -5,21 +5,19 @@
      <div class="topheader">
       <div class="container">
         <ul class="menu">
-          <li><a href="#">О нас</a></li>
-          <li><a href="#">редакционная</a></li>
-          <li><a href="#">политика</a></li>
-          <li><a href="#">контакты</a></li>
+          <li><a href="contact/">About us</a></li>
+          <li><a href="contact/">Contacts</a></li>
         </ul>
         <ul class="kurs">
           <li>1 USD = {{usd_to_sum}}</li>
           <li>1 EUR = {{eur_to_sum}}</li>
           <li>1 RUB = {{rub_to_sum}}</li>
         </ul>
-        <ul class="lang">
+        {% comment %} <ul class="lang">
           <li><a href="">En</a></li>
           <li class="active"><a href="#">Ru</a></li>
           <li><a href="">Uz</a></li>
-        </ul>
+        </ul> {% endcomment %}
         <ul class="social">
           <li>
             <a href="#"><span class="fa fa-facebook-f"></span></a>
@@ -68,12 +66,12 @@
             <i class="fa fa-close"></i>
           </button>
           <ul class="nav navbar-nav">
-            <li><a href="../category/economics">экономика</a></li>
-            <li><a href="../category/politics">политика</a></li>
-            <li><a href="../category/community">общество</a></li>
-            <li><a href="../category/culture">культура</a></li>
-            <li><a href="../category/sports">спорт</a></li>
-            <li><a href="../category/global">в мире</a></li>
+           <li><a href="../category/economics">economics</a></li>
+            <li><a href="../category/politics">politics</a></li>
+            <li><a href="../category/community">community</a></li>
+            <li><a href="../category/culture">culture</a></li>
+            <li><a href="../category/sports">sport</a></li>
+            <li><a href="../category/global">world</a></li>
           </ul>
         </div>
       </div>
@@ -84,8 +82,8 @@
       <div class="clearfix"></div>
 
       <ol class="breadcrumb">
-        <li><a href="#">Главная</a></li>
-        <li class="active">Политика</li>
+        <li><a href="#">Main</a></li>
+        <li class="active">Search</li>
       </ol>
       
       <div class="row">
@@ -98,7 +96,7 @@
                   id="q"
                   type="text">
               <div class="input-group">
-                <input type="text" name="q" placeholder="Поиск" required=""/>
+                <input type="text" name="q" placeholder="Search" required=""/>
                 <button class="btn submit"><i class="fa fa-search"></i></button>
               </div>
             </form>
@@ -164,7 +162,7 @@
           </div>
         </div>
         <div class="col-md-4 col-xs-12">
-          <div class="head_title">Свежие новости</div>
+          <div class="head_title">Recent news</div>
           <div
             id="listnews"
             class="carousel slide listnews"
@@ -235,11 +233,11 @@
             <div class="rek_right"></div>
           </div>
           <div class="subscribe">
-            <div class="title">Подписывайся на <b>1news.uz</b></div>
+            <div class="title">Subscribe to <b>1news.uz</b></div>
             <form action="">
               <div class="input-group">
                 <input type="text" name="email" placeholder="Email" />
-                <button class="submit">Подписываться</button>
+                <button class="submit">Subscribe</button>
               </div>
             </form>
           </div>
@@ -254,13 +252,11 @@
             <img src="{% static 'img/logo.png' %}" alt="" class="logo" />
           </div>
           <div class="col-md-6 col-xs-12">
-            <div class="title">О нас</div>
+             <div class="title">About us</div>
             <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-              commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-              penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-              Donec quam felis, ultricies nec
-            </p>
+             The online publication 1news.uz covers the socio-political,
+             socio-economic, cultural, sports life of Uzbekistan and
+             events taking place in the world.</p>
           </div>
           <div class="col-md-3 col-xs-12 text-right">
             <ul class="social">
@@ -287,11 +283,8 @@
     <footer>
       <div class="container">
         <ul class="menu">
-          <li><a href="#">о нас</a></li>
-          <li><a href="#">контакты</a></li>
-          <li><a href="#">редакционная</a></li>
-          <li><a href="#">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a></li>
-          <li><a href="#">СОГЛАШЕНИЕ</a></li>
+          <li><a href="contact/">about us</a></li>
+          <li><a href="contact/">contacts</a></li>
         </ul>
         <div class="copyright">© COPYRIGHT 2017 BY <a href="#">md</a></div>
       </div>
