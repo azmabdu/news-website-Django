@@ -10,7 +10,7 @@ Main features:
   - Sending welcome emails
   
  Instructions to run the website:
-  1. After clonning the repo, make sure Django and Python are installed
+  1. After clonning the repo, make sure Django and Python are installed (if not 'pip install python' and 'pip install django')
   2. Open terminal and get to the root directory (../website/)
   3. Type 'python manage.py runserver' to the shell
   4. Open the provided link
