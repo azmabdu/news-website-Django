@@ -35,6 +35,9 @@ class Publication(models.Model):
     tag4 = models.CharField(max_length=20, blank=True)
     tag5 = models.CharField(max_length=20, blank=True)
 
+    def __str__(self):
+        return self.publication
+
 
 class User(models.Model):
     username = models.CharField(max_length=20, unique=True)

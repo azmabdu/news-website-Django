@@ -6,20 +6,13 @@
  	<div class="topheader">
 		<div class="container">
 			<ul class="menu">
-				<li><a href="#">о нас</a></li>
-				<li><a href="#">редакционная</a></li>
-				<li><a href="#">политика</a></li>
-				<li><a href="#">контакты</a></li>
+				<li><a href="contact/">о нас</a></li>
+				<li><a href="contact/">контакты</a></li>
 			</ul>
 			<ul class="kurs">
 				  <li>1 USD = {{usd_to_sum}}</li>
           <li>1 EUR = {{eur_to_sum}}</li>
           <li>1 RUB = {{rub_to_sum}}</li>
-			</ul>
-			<ul class="lang">
-				<li><a href="">En</a></li>
-				<li class="active"><a href="#">Ru</a></li>
-				<li><a href="">Uz</a></li>
 			</ul>
 			<ul class="social">
 				<li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
@@ -45,12 +38,12 @@
 					<i class="fa fa-close"></i>
 				</button>
 				<ul class="nav navbar-nav">
-					<li><a href="../category/economics">экономика</a></li>
-            <li><a href="../category/politics">политика</a></li>
-            <li><a href="../category/community">общество</a></li>
-            <li><a href="../category/culture">культура</a></li>
-            <li><a href="../category/sports">спорт</a></li>
-            <li><a href="../category/global">в мире</a></li>
+					<li><a href="../category/economics">economics</a></li>
+            <li><a href="../category/politics">politics</a></li>
+            <li><a href="../category/community">community</a></li>
+            <li><a href="../category/culture">culture</a></li>
+            <li><a href="../category/sports">sport</a></li>
+            <li><a href="../category/global">world</a></li>
  				</ul>
 
 			</div>
@@ -61,7 +54,7 @@
 		<div class="longrek"></div>
 		<div class="clearfix"></div>
 		<ol class="breadcrumb">
-			<li><a href="#">Главная</a></li>
+			<li><a href="#">Main</a></li>
 			<li><a href="#">{{ object.section }}</a></li>
 			<li class="active"> {{ object.title }}</li>
  		</ol>
@@ -148,7 +141,7 @@
 					<div class="clearfix"></div>
 				</div>
 				<div class="comment">
-					<div class="title">Комменты</div>
+					<div class="title">Comments</div>
 					
  					<ul>
 					 	{% for comment in comments %}
@@ -180,14 +173,11 @@
 						</li>
 						{% endfor %}
 					</ul>
-					<button class="btn add_comment" ><a href="comment/{{ object.id }}">Add comment</a></button>
-
-					<div class="add_info">Приветствуются интересные и осмысленные комментарии по теме материала.</div>
 				</div>
 				</div>
 			</div>
 			<div class="col-md-4 col-xs-12">
-				<div class="head_title">Свежие новости</div>
+				<div class="head_title">Recent news</div>
 				<div id="listnews" class="carousel slide listnews" data-ride="carousel">
 					<div class="news_box">
 						<div class="carousel-inner" role="listbox">
@@ -234,15 +224,20 @@
 						
 					</div>
 				</div>
-				<div class="subscribe">
-					<div class="title">Подписывайся на <b>1news.uz</b></div>
-					<form action="">
-						<div class="input-group">
-							<input type="text" name="email" placeholder="Email">
-							<button class="submit">Подписываться</button>
-						</div>
-					</form>
-				</div>
+				 <div class="subscribe">
+            <div class="title">Subscribe to <b>uznews.uz</b></div>
+            <form action="{% url "email" %}"
+                  method="POST"
+                  id="email"
+                  type="text">
+              {% csrf_token %}
+
+               <div class="input-group">
+                <input type="text" name="email" placeholder="Email"/>
+                <button class="submit">Subscribe</button>
+              </div>
+            </form>
+          </div>
 			</div>
 		</div>
 	</div>
@@ -252,8 +247,12 @@
 			<div class="row">
 				<div class="col-md-3 col-xs-12"><img src="{% static 'img/logo.png' %}" alt="" class="logo"></div>
 				<div class="col-md-6 col-xs-12">
-					<div class="title">О нас</div>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec</p>
+				<div class="title">About us</div>
+            <p>
+               The online publication 1news.uz covers the socio-political,
+             socio-economic, cultural, sports life of Uzbekistan and
+             events taking place in the world.
+            </p>
 				</div>
 				<div class="col-md-3 col-xs-12 text-right">
 					<ul class="social">
@@ -270,11 +269,8 @@
 	<footer>
 		<div class="container">
 			<ul class="menu">
-				<li><a href="#">о нас</a></li>
-				<li><a href="#">контакты</a></li>
-				<li><a href="#">редакционная</a></li>
-				<li><a href="#">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a></li>
-				<li><a href="#">СОГЛАШЕНИЕ</a></li>
+				<li><a href="contact/">About us</a></li>
+				<li><a href="contact/">Contacts</a></li>
 			</ul>
 			<div class="copyright">
 				© COPYRIGHT 2017 BY <a href="#">md</a>

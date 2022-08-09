@@ -65,20 +65,20 @@ def category(request, section):
         "section": value,
         "obj_num": obj_num,
         "obj_divided": range(obj_divided),
-        # "usd_to_sum": converter("USD"),
-        # "eur_to_sum": converter("EUR"),
-        # "rub_to_sum": converter("RUB"),
+        "usd_to_sum": converter("USD"),
+        "eur_to_sum": converter("EUR"),
+        "rub_to_sum": converter("RUB"),
         "recent_news": recent_news(),
     })
 
 
 def contact(request):
     return render(request, "firstapp/contact.html", {
-        # "usd_to_sum": converter("USD"),
-        # "eur_to_sum": converter("EUR"),
-        # "rub_to_sum": converter("RUB"),
+        "usd_to_sum": converter("USD"),
+        "eur_to_sum": converter("EUR"),
+        "rub_to_sum": converter("RUB"),
 
-        # "weather": weather("Tashkent"),
+        "weather": weather("Tashkent"),
     })
 
 
@@ -96,9 +96,9 @@ def index(request):
 
     return render(request, "firstapp/index.html",
                   {
-                      #   "usd_to_sum": converter("USD"),
-                      #   "eur_to_sum": converter("EUR"),
-                      #   "rub_to_sum": converter("RUB"),
+                      "usd_to_sum": converter("USD"),
+                      "eur_to_sum": converter("EUR"),
+                      "rub_to_sum": converter("RUB"),
 
                       "objects": objects,
                       "politics_objects": topic_list[0],
@@ -110,7 +110,7 @@ def index(request):
                       "world_objects": topic_list[6],
 
                       "recent_news": recent_news(),
-                      #   "weather": weather("Tashkent"),
+                      "weather": weather("Tashkent"),
                   })
 
 
@@ -138,25 +138,25 @@ def view(request, id):
                       "previous_object": previous_object,
                       "comments": comments,
                       "subcomments": subcomments,
-                      #   "recent_news": recent_news(),
-                      #   "usd_to_sum": converter("USD"),
-                      #   "eur_to_sum": converter("EUR"),
-                      #   "rub_to_sum": converter("RUB"),
+                      "recent_news": recent_news(),
+                      "usd_to_sum": converter("USD"),
+                      "eur_to_sum": converter("EUR"),
+                      "rub_to_sum": converter("RUB"),
                   })
 
 
-# def converter(international_currency):
-#     url = f"https://cbu.uz/ru/arkhiv-kursov-valyut/json/{international_currency}/{date.today()}/"
-#     response = requests.request("GET", url)
-#     json_file = json.loads(response.text)
-#     return json_file[0]['Rate']
+def converter(international_currency):
+    url = f"https://cbu.uz/ru/arkhiv-kursov-valyut/json/{international_currency}/{date.today()}/"
+    response = requests.request("GET", url)
+    json_file = json.loads(response.text)
+    return json_file[0]['Rate']
 
 
-# def weather(city):
-#     base_url = f"http://api.openweathermap.org/data/2.5/weather?appid=eb8083d38c634a3b0fe5efd72449ee98&q={city}"
-#     response = requests.get(base_url)
-#     x = response.json()
-#     return round((x["main"]["temp"] - 273.15))
+def weather(city):
+    base_url = f"http://api.openweathermap.org/data/2.5/weather?appid=eb8083d38c634a3b0fe5efd72449ee98&q={city}"
+    response = requests.get(base_url)
+    x = response.json()
+    return round((x["main"]["temp"] - 273.15))
 
 
 def search(request):
@@ -180,9 +180,9 @@ def search(request):
 
     return render(request, "firstapp/search.html",
                   {
-                      #   "usd_to_sum": converter("USD"),
-                      #   "eur_to_sum": converter("EUR"),
-                      #   "rub_to_sum": converter("RUB"),
+                      "usd_to_sum": converter("USD"),
+                      "eur_to_sum": converter("EUR"),
+                      "rub_to_sum": converter("RUB"),
 
                       "search": my_query,
                       "num_of_pubs": obj_num,
